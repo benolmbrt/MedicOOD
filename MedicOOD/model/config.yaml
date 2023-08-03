@@ -1,9 +1,9 @@
---output-folder: /home/belambert/syndata3107/model
+--output-folder: /output/folder
 --overwrite:
 --batch-size: 4
 --num-workers: 10
 --gpus: 3
---data-csv: /home/belambert/syndata3107/train.csv
+--data-csv: /path/syn/data/train.csv
 --channel-name: image
 --segm-name: mask
 --n-classes: 2
