@@ -13,9 +13,17 @@ Out-of-distribution data: a ID sample is made OOD by adding TorchIO's RandomMoti
 ![OOD](https://github.com/benolmbrt/MedicOOD/blob/master/ood_data.png)
 
 - Step 2: Train a simple segmentation DynUnet using [train.py](https://github.com/benolmbert/MedicOOD/blob/master/MedicOOD/model/train.py)
+The training can be launched using:
+
+ ```python MedicOOD/MedicOOD/model/train.py MedicOOD/MedicOOD/model/config.yaml```. 
+ 
+ Don't forget to modify the paths of ```--output-folder``` and ```--data-csv``` in the YAML file.
+
 - Step 3: Launch evaluation using [test.py](https://github.com/benolmbert/MedicOOD/blob/master/MedicOOD/model/test.py)
 This script will train an instance of each feature-based OOD detector from the features of the trained DynUnet.
-Then inference is launched on the test ID dataset and test OOD dataset. By comparing these scores, AUROC scores are extracted to estimate OOD detection performance. 
+Then inference is launched on the test ID dataset and test OOD dataset. By comparing these scores, AUROC scores are extracted to estimate OOD detection performance.
+
+You can use a command such as:  ```python MedicOOD/MedicOOD/model/test.py --run-folder path/to/trained/model```
 
 | OOD detector  | AUROC |
 | ------------- | ------------- |
