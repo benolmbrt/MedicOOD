@@ -70,11 +70,11 @@ def main(args, config_filename):
 
     # save config and augmentation file in output_folder
     shutil.copy(config_filename, os.path.join(args.output_folder, 'config.yaml'))
-    args.monitor, args.mode = 'dice', 'max'
+    args.monitor, args.mode = 'val_dice', 'max'
     early_stop_callback = get_early_stop_callback(args.monitor, args.mode, args)
     ckpt_folder = os.path.join(args.output_folder, 'checkpoints')
 
-    ckpt_save_name =  '{epoch}_{val_loss:.4f}_{val_dice:.4f}'
+    ckpt_save_name = '{epoch}_{val_loss:.4f}_{val_dice:.4f}'
     checkpoint_callback = get_checkpoint_callback(ckpt_folder, ckpt_save_name, args.monitor, args.mode)
     lr_callback = LearningRateMonitor(logging_interval='step')
 
